@@ -9,6 +9,7 @@ const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 const VALIDATOR_P2P_ADDRESS = process.env.VALIDATOR_P2P_ADDRESS;
 const SUBSQUID_NETWORK = process.env.SUBSQUID_NETWORK;
+const HEALTHCHECK_URL = process.env.HEALTHCHECK_URL;
 const API_URL = `https://app.subsquid.io/network/api/metrics/${SUBSQUID_NETWORK}/workers`;
 
 let is_down = false;
@@ -42,12 +43,18 @@ async function checkValidatorStatus() {
             }
         }
         // Validator found, no need to continue checking
+        if(HEALTHCHECK_URL){
+          axios.get(HEALTHCHECK_URL);
+        }
         return;
       }
     }
 
     // Validator not found in the list
     console.log(`Validator ${VALIDATOR_P2P_ADDRESS} not found.`);
+    if(HEALTHCHECK_URL){
+      axios.get(HEALTHCHECK_URL);
+    }
   } catch (error) {
     console.error('Error:', error);
   }

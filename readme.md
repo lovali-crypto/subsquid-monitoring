@@ -33,6 +33,8 @@ Create a `.env` file in the project's root directory and add the following envir
 TELEGRAM_BOT_TOKEN=your-telegram-bot-token
 TELEGRAM_CHAT_ID=your-telegram-cha-id
 VALIDATOR_P2P_ADDRESS=your-validator-p2p-address
+SUBSQUID_NETWORK=testnet
+HEALTHCHECK_URL=healthcheck.io_id
 ```
 
 Replace the placeholders with your actual values. Here's how to obtain these values:
@@ -42,6 +44,10 @@ Replace the placeholders with your actual values. Here's how to obtain these val
 - TELEGRAM_CHAT_ID: Determine the chat ID where you want to receive the notifications. You can either create a dedicated chat group or use your personal chat ID.
 
 - VALIDATOR_P2P_ADDRESS: Set the P2P address of the validator you want to monitor.
+
+- SUBSQUID_NETWORK: The subsquid network to monitor
+
+- HEALTHCHECK_URL: if you want to enable healthcheck.io integration, add the full endpoint url.
 
 **4. Run the Monitoring Script**
 
